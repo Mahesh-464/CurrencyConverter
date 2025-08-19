@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Vehicle Sales System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="./index.html">
+                <i class="fas fa-car"></i> Smart Vehicle Sales
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vehicles.html">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav" id="authLinks">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./register.html">Register</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-none" id="userLinks">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i> <span id="userFullName">User</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold text-white mb-4">
+                            Smart Vehicle Sales System
+                        </h1>
+                        <p class="lead text-white mb-4">
+                            Find your perfect vehicle with our advanced search and filtering system. 
+                            Buy, sell, and explore vehicles with confidence.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="vehicles.html" class="btn btn-light btn-lg me-3">
+                                <i class="fas fa-search"></i> Browse Vehicles
+                            </a>
+                            <a href="./register.html" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-user-plus"></i> Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="./images/car-image2.jpg" alt="Smart Vehicle" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold">Why Choose Our Platform?</h2>
+                    <p class="lead text-muted">Discover the best features for buying and selling vehicles</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-search fa-3x text-primary"></i>
+                        </div>
+                        <h4>Smart Search</h4>
+                        <p class="text-muted">Advanced filtering system to find exactly what you're looking for with ease.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                        </div>
+                        <h4>Secure Payments</h4>
+                        <p class="text-muted">Integrated with Razorpay for safe and secure payment processing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card h-100">
+                        <div class="feature-icon">
+                            <i class="fas fa-users fa-3x text-primary"></i>
+                        </div>
+                        <h4>Trusted Community</h4>
+                        <p class="text-muted">Connect with verified buyers and sellers in a trusted environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Vehicles Section -->
+    <section class="latest-vehicles-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold">Latest Vehicles</h2>
+                    <p class="lead text-muted">Check out our newest vehicle listings</p>
+                </div>
+            </div>
+            <div class="row" id="latestVehicles">
+                <!-- Vehicles will be loaded here -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="vehicles.html" class="btn btn-primary btn-lg">
+                    View All Vehicles <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card">
+                        <h3 class="stat-number text-primary" id="totalVehicles">0</h3>
+                        <p class="stat-label">Total Vehicles</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card">
+                        <h3 class="stat-number text-success" id="totalUsers">0</h3>
+                        <p class="stat-label">Happy Customers</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card">
+                        <h3 class="stat-number text-warning" id="totalSellers">0</h3>
+                        <p class="stat-label">Trusted Sellers</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stat-card">
+                        <h3 class="stat-number text-info" id="totalSales">0</h3>
+                        <p class="stat-label">Successful Sales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-car"></i> Smart Vehicle Sales
+                    </h5>
+                    <p class="text-muted">
+                        Your trusted platform for buying and selling vehicles. 
+                        We connect buyers and sellers in a secure environment.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Home</a></li>
+                        <li><a href="vehicles.html" class="text-muted">Vehicles</a></li>
+                        <li><a href="about.html" class="text-muted">About Us</a></li>
+                        <li><a href="contact.html" class="text-muted">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Buy Vehicles</a></li>
+                        <li><a href="#" class="text-muted">Sell Vehicles</a></li>
+                        <li><a href="#" class="text-muted">Vehicle Reviews</a></li>
+                        <li><a href="#" class="text-muted">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <div class="contact-info">
+                        <p class="text-muted">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            123 Business Street, City, State 12345
+                        </p>
+                        <p class="text-muted">
+                            <i class="fas fa-phone"></i> 
+                            +91 9876543210
+                        </p>
+                        <p class="text-muted">
+                            <i class="fas fa-envelope"></i> 
+                            info@smartvehiclesales.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Smart Vehicle Sales. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-muted me-3">Privacy Policy</a>
+                    <a href="#" class="text-muted">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        // Load latest vehicles on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLatestVehicles();
+            loadStatistics();
+            checkAuthStatus();
+        });
+
+        async function loadLatestVehicles() {
+            try {
+                const response = await api.get('/vehicles/public?size=6&sortBy=createdAt&sortDir=desc');
+                const data = await response.json();
+                
+                if (data.vehicles && data.vehicles.length > 0) {
+                    displayVehicles(data.vehicles);
+                } else {
+                    document.getElementById('latestVehicles').innerHTML = 
+                        '<div class="col-12 text-center"><p class="text-muted">No vehicles available at the moment.</p></div>';
+                }
+            } catch (error) {
+                console.error('Error loading vehicles:', error);
+                document.getElementById('latestVehicles').innerHTML = 
+                    '<div class="col-12 text-center"><p class="text-danger">Error loading vehicles.</p></div>';
+            }
+        }
+
+        function displayVehicles(vehicles) {
+            const container = document.getElementById('latestVehicles');
+            container.innerHTML = '';
+            
+            vehicles.forEach(vehicle => {
+                const vehicleCard = createVehicleCard(vehicle);
+                container.innerHTML += vehicleCard;
+            });
+        }
+
+        function createVehicleCard(vehicle) {
+            const imageUrl = vehicle.imageUrl || 'images/default-car.jpg';
+            const price = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR'
+            }).format(vehicle.price);
+
+            return `
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="vehicle-card h-100">
+                        <div class="vehicle-image">
+                            <img src="${imageUrl}" alt="${vehicle.make} ${vehicle.model}" class="card-img-top">
+                            <div class="vehicle-status bg-success">${vehicle.status}</div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${vehicle.make} ${vehicle.model}</h5>
+                            <p class="card-text text-muted">${vehicle.year} • ${vehicle.fuelType} • ${vehicle.transmission}</p>
+                            <div class="vehicle-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>${vehicle.mileage.toLocaleString()} km</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-palette"></i>
+                                    <span>${vehicle.color}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <h4 class="text-primary mb-0">${price}</h4>
+                                <a href="vehicle-details.html?id=${vehicle.id}" class="btn btn-outline-primary">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function loadStatistics() {
+            try {
+                // These would typically come from dedicated API endpoints
+                // For now, we'll simulate the data
+                animateCounter('totalVehicles', 150);
+                animateCounter('totalUsers', 500);
+                animateCounter('totalSellers', 75);
+                animateCounter('totalSales', 200);
+            } catch (error) {
+                console.error('Error loading statistics:', error);
+            }
+        }
+
+        function animateCounter(elementId, target) {
+            const element = document.getElementById(elementId);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 40);
+        }
+    </script>
+</body>
+</html>
